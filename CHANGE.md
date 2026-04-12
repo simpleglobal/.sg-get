@@ -2,6 +2,7 @@
 
 | Version | Hash | Date | Author | Message |
 |---------|------|------|--------|---------|
+| v0.0.0.5 | 437bdd0 | 2026-04-12 11:57 UTC | Greg Gowans | Migrate download subdomain from welcome.simplemotion.com to get.simplemotion.com |
 | v0.0.0.4 | 9f094f5 | 2026-04-12 11:53 UTC | Greg Gowans | Fix onboarding templates — remove stale SimpleGlobal PATH, pre-populate enabledPlugins, clarify known issues |
 | v0.0.0.3 | 0d53532 | 2026-04-12 09:16 UTC | Greg Gowans | Use welcome.simplemotion.com subdomain |
 | v0.0.0.2 | 74b5430 | 2026-04-12 09:13 UTC | Greg Gowans | Rename to .sm-welcome, add CNAME for simplemotion.com/welcome.sh, fix curl|bash tty reads, add gh-pages deploy workflow |

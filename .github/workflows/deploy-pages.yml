@@ -27,7 +27,7 @@ jobs:
           cp init.sh welcome.sh
           rm init.sh
 
-          echo "welcome.simplemotion.com" > CNAME
+          echo "get.simplemotion.com" > CNAME
 
           git add welcome.sh CNAME
           git diff --cached --quiet && echo "No changes" || \

@@ -7,7 +7,7 @@ Full design rationale and implementation details for the SimpleMotion executive 
 A single `curl | bash` command bootstraps a fresh Mac with everything needed to work in the SimpleMotion Claude Code environment:
 
 ```bash
-curl -fsSL https://welcome.simplemotion.com/welcome.sh | bash
+curl -fsSL https://get.simplemotion.com/welcome.sh | bash
 ```
 
 ## Design Decisions

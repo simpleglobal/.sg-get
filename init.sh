@@ -3,7 +3,7 @@ set -euo pipefail
 
 # ============================================================================
 # SimpleMotion Executive Onboarding Bootstrap
-# Usage: curl -fsSL https://welcome.simplemotion.com/welcome.sh | bash
+# Usage: curl -fsSL https://get.simplemotion.com/welcome.sh | bash
 # ============================================================================
 
 INIT_REPO="https://github.com/simplemotion/.sm-welcome.git"
