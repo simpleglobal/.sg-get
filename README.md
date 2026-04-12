@@ -1,11 +1,11 @@
-# .simplemotion-init
+# .sm-welcome
 
 Executive onboarding bootstrap for SimpleMotion. Sets up Claude Code, gh CLI, Rust, and the full plugin environment on a fresh Mac with a single command.
 
 ## Usage
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/simplemotion/.simplemotion-init/main/init.sh | bash
+curl -fsSL https://simplemotion.com/welcome.sh | bash
 ```
 
 ## What it does

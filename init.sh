@@ -3,11 +3,11 @@ set -euo pipefail
 
 # ============================================================================
 # SimpleMotion Executive Onboarding Bootstrap
-# Usage: curl -fsSL https://raw.githubusercontent.com/simplemotion/.simplemotion-init/main/init.sh | bash
+# Usage: curl -fsSL https://simplemotion.com/welcome.sh | bash
 # ============================================================================
 
-INIT_REPO="https://github.com/simplemotion/.simplemotion-init.git"
-INIT_DIR="/tmp/.simplemotion-init"
+INIT_REPO="https://github.com/simplemotion/.sm-welcome.git"
+INIT_DIR="/tmp/.sm-welcome"
 EMPLOYEES_ORG="SimpleMotion-9200-0000-00-Employees"
 
 # ── Helpers ─────────────────────────────────────────────────────────────────
@@ -33,14 +33,14 @@ info "macOS $(sw_vers -productVersion) ($ARCH)"
 
 if [[ -d "$HOME/SimpleMotion" ]]; then
     warn "~/SimpleMotion already exists. This script is for fresh installs."
-    read -p "  Continue anyway? (y/n): " CONTINUE
+    read -p "  Continue anyway? (y/n): " CONTINUE < /dev/tty
     [[ "$CONTINUE" == "y" ]] || exit 0
 fi
 
 # ── Step 2: Collect email ──────────────────────────────────────────────────
 
 echo ""
-read -p "  SimpleMotion email: " USER_EMAIL
+read -p "  SimpleMotion email: " USER_EMAIL < /dev/tty
 
 [[ "$USER_EMAIL" == *@simplemotion.com ]] || fail "Must be an @simplemotion.com address."
 
@@ -62,7 +62,7 @@ echo "    Name:     $USER_NAME"
 echo "    GitHub:   $GITHUB_USERNAME"
 echo "    Email:    $USER_EMAIL"
 echo ""
-read -p "  Correct? (y/n): " CONFIRM
+read -p "  Correct? (y/n): " CONFIRM < /dev/tty
 [[ "$CONFIRM" == "y" ]] || fail "Aborted. Re-run and enter the correct email."
 
 # ── Step 3: Clone config repo ─────────────────────────────────────────────
@@ -222,7 +222,7 @@ ok "Symlinks created."
 echo ""
 info "Sending welcome confirmation email..."
 gh workflow run welcome.yml \
-    --repo simplemotion/.simplemotion-init \
+    --repo simplemotion/.sm-welcome \
     --field email="$USER_EMAIL" \
     --field name="$USER_NAME" 2>/dev/null \
     && ok "Welcome email triggered. Check your inbox." \

@@ -7,7 +7,7 @@ Full design rationale and implementation details for the SimpleMotion executive 
 A single `curl | bash` command bootstraps a fresh Mac with everything needed to work in the SimpleMotion Claude Code environment:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/simplemotion/.simplemotion-init/main/init.sh | bash
+curl -fsSL https://simplemotion.com/welcome.sh | bash
 ```
 
 ## Design Decisions
@@ -50,7 +50,7 @@ The gh CLI binary is downloaded as a zip and extracted to `~/.local/bin/` (no `s
 |------|--------|--------|
 | 1 | Preflight | Verify macOS, git, not root, detect arch |
 | 2 | Collect email | Single prompt, infer name + GitHub username, confirm |
-| 3 | Clone config repo | `git clone .simplemotion-init` to `/tmp/` for template files |
+| 3 | Clone config repo | `git clone .sm-welcome` to `/tmp/` for template files |
 | 4 | Install Claude Code | `curl -fsSL https://claude.ai/install.sh \| sh` |
 | 5 | Install gh CLI | Download latest release zip, extract to `~/.local/bin/` |
 | 6 | GitHub auth | `gh auth login --web` (browser OAuth flow) |
@@ -123,7 +123,7 @@ Triggered via GitHub Actions (`welcome.yml`) after successful GitHub auth.
 
 ### Prerequisites
 
-Repository secrets in `simplemotion/.simplemotion-init`:
+Repository secrets in `simplemotion/.sm-welcome`:
 
 | Secret | Value |
 |--------|-------|

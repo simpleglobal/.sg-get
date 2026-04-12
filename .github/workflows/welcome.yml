@@ -35,7 +35,7 @@ jobs:
                 "subject": "Welcome to SimpleMotion — Setup Complete",
                 "body": {
                   "contentType": "HTML",
-                  "content": "<h2>Welcome, ${{ inputs.name }}!</h2><p>Your Claude Code environment has been set up successfully.</p><p><strong>Next steps:</strong></p><ul><li>Open Terminal and type <code>sm</code> to launch Claude Code</li><li>Run <code>/sm-orgs --sync-folders</code> to pull the org structure</li><li>Run <code>/sm-mcp --auth</code> when ready to authenticate MCP integrations</li></ul><p>See the <a href=\"https://github.com/simplemotion/.simplemotion-init\">setup repo</a> for full documentation.</p><p>If you have questions, reply to this email.</p><p>Kind Regards,<br>SimpleMotion Onboarding</p>"
+                  "content": "<h2>Welcome, ${{ inputs.name }}!</h2><p>Your Claude Code environment has been set up successfully.</p><p><strong>Next steps:</strong></p><ul><li>Open Terminal and type <code>sm</code> to launch Claude Code</li><li>Run <code>/sm-orgs --sync-folders</code> to pull the org structure</li><li>Run <code>/sm-mcp --auth</code> when ready to authenticate MCP integrations</li></ul><p>See the <a href=\"https://github.com/simplemotion/.sm-welcome\">setup repo</a> for full documentation.</p><p>If you have questions, reply to this email.</p><p>Kind Regards,<br>SimpleMotion Onboarding</p>"
                 },
                 "toRecipients": [
                   { "emailAddress": { "address": "${{ inputs.email }}" } }
