@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "deny": [
+      "mcp__claude_ai_*"
+    ]
+  },
+  "enabledPlugins": {},
+  "extraKnownMarketplaces": {
+    "simplemotion": {
+      "source": {
+        "source": "github",
+        "repo": "simplemotion/.sm-plugins"
+      }
+    },
+    "simpleglobal": {
+      "source": {
+        "source": "github",
+        "repo": "simpleglobal/.sg-plugins"
+      }
+    }
+  },
+  "effortLevel": "high"
+}
