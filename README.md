@@ -5,7 +5,7 @@ Executive onboarding bootstrap for SimpleMotion. Sets up Claude Code, gh CLI, Ru
 ## Usage
 
 ```bash
-curl -fsSL https://simplemotion.com/welcome.sh | bash
+curl -fsSL https://welcome.simplemotion.com/welcome.sh | bash
 ```
 
 ## What it does
