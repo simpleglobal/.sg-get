@@ -141,11 +141,13 @@ The Azure AD app requires `Mail.Send` application permission for `greg.gowans@si
 
 ## Known Issues
 
-1. **`.claude-executive` hardcoded paths**: The `.claude-executive` submodule `settings.json` contains hardcoded `/Users/greg.gowans/**` permission paths. Other users need a fix in that submodule to use `$HOME`-relative paths.
+1. **`.claude-executive` hardcoded paths**: The `.claude-executive` submodule `settings.json` (in `SimpleMotion-9900-0000-00-Templates`) contains hardcoded `/Users/greg.gowans/**` permission paths. This affects all repos, not just welcome — the fix must happen in the `.claude-executive` source template, then propagate via submodule updates. New users will get permission denials until this is resolved.
 
 2. **Employee repo must pre-exist**: Admin must create the employee repo from the folder template and invite the GitHub user BEFORE the new exec runs the init script.
 
 3. **Azure AD secrets**: The welcome email workflow requires Azure AD app credentials configured as repository secrets. Without these, the email step is skipped (non-fatal).
+
+4. **CLAUDE.md template drift**: The `config/claude/CLAUDE.md` is a static copy of the enterprise rules. It will drift as the user-level `CLAUDE.md` evolves via `.claude-executive` submodule updates. Accepted trade-off — new execs get a working starting point, and subsequent updates arrive via the `.claude-executive` submodule in their employee repo.
 
 ## Verification Checklist
 

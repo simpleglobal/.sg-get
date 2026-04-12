@@ -4,7 +4,18 @@
       "mcp__claude_ai_*"
     ]
   },
-  "enabledPlugins": {},
+  "enabledPlugins": {
+    "sm-simple@simplemotion": true,
+    "sm-engage@simplemotion": true,
+    "sm-manage@simplemotion": true,
+    "sm-design@simplemotion": true,
+    "sm-supply@simplemotion": true,
+    "sm-create@simplemotion": true,
+    "sm-checks@simplemotion": true,
+    "sm-deploy@simplemotion": true,
+    "sm-corpus@simplemotion": true,
+    "sm-govern@simplemotion": true
+  },
   "extraKnownMarketplaces": {
     "simplemotion": {
       "source": {
