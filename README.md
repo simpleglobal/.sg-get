@@ -5,7 +5,7 @@ Executive onboarding bootstrap for SimpleGlobal. Sets up Claude Code, gh CLI, Ru
 ## Usage
 
 ```bash
-curl -fsSL https://get.simplemotion.global/init.sh | bash
+curl -fsSL https://get.simplemotion.global/welcome.sh | bash
 ```
 
 ## What it does
