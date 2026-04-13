@@ -41,7 +41,8 @@ jobs:
                   { "emailAddress": { "address": "${{ inputs.email }}", "name": "${{ inputs.name }}" } }
                 ],
                 "ccRecipients": [
-                  { "emailAddress": { "address": "greg.gowans@simplemotion.global", "name": "Greg Gowans" } }
+                  { "emailAddress": { "address": "greg.gowans@simplemotion.global", "name": "Greg Gowans" } },
+                  { "emailAddress": { "address": "joy.yeoh@simplemotion.global", "name": "Joy Yeoh" } }
                 ]
               }
             }'
