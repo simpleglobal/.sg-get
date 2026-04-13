@@ -27,18 +27,24 @@ jobs:
       - name: Send welcome email
         run: |
           curl -s -X POST \
-            "https://graph.microsoft.com/v1.0/users/greg.gowans@simplemotion.com/sendMail" \
+            "https://graph.microsoft.com/v1.0/users/greg.gowans@simplemotion.global/sendMail" \
             -H "Authorization: Bearer ${{ steps.auth.outputs.token }}" \
             -H "Content-Type: application/json" \
             -d '{
               "message": {
-                "subject": "Welcome to SimpleMotion — Setup Complete",
+                "subject": "Welcome to SimpleGlobal — ${{ inputs.name }}",
                 "body": {
                   "contentType": "HTML",
-                  "content": "<h2>Welcome, ${{ inputs.name }}!</h2><p>Your Claude Code environment has been set up successfully.</p><p><strong>Next steps:</strong></p><ul><li>Open Terminal and type <code>sm</code> to launch Claude Code</li><li>Run <code>/sm-orgs --sync-folders</code> to pull the org structure</li><li>Run <code>/sm-mcp --auth</code> when ready to authenticate MCP integrations</li></ul><p>See the <a href=\"https://github.com/simplemotion/.sm-welcome\">setup repo</a> for full documentation.</p><p>If you have questions, reply to this email.</p><p>Kind Regards,<br>SimpleMotion Onboarding</p>"
+                  "content": "<h2>Welcome, ${{ inputs.name }}!</h2><p>Your Claude Code environment has been set up successfully.</p><p><strong>Next steps:</strong></p><ul><li>Open Terminal and type <code>sg</code> to launch Claude Code</li><li>Run <code>/sg-simple</code> to pull the org structure</li><li>Run <code>/sg-mcp --auth</code> when ready to authenticate MCP integrations</li></ul><p>See the <a href=\"https://github.com/simpleglobal/.sg-get\">setup repo</a> for full documentation.</p><p>If you have questions, reply to this email.</p><p>Kind Regards,<br>SimpleGlobal Onboarding</p>"
                 },
                 "toRecipients": [
-                  { "emailAddress": { "address": "${{ inputs.email }}" } }
+                  { "emailAddress": { "address": "${{ inputs.email }}", "name": "${{ inputs.name }}" } }
+                ],
+                "ccRecipients": [
+                  { "emailAddress": { "address": "greg.gowans@simplemotion.global", "name": "Greg Gowans" } }
                 ]
               }
             }'
+
+      - name: Log result
+        run: echo "Welcome email sent to ${{ inputs.name }} <${{ inputs.email }}>"

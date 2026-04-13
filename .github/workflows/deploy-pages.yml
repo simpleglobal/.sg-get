@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-    paths: [init.sh]
+    paths: [welcome.sh]
 
 permissions:
   contents: write
@@ -20,14 +20,15 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git fetch origin gh-pages:gh-pages
-          git checkout gh-pages
+          # Create gh-pages branch if it doesn't exist
+          if git fetch origin gh-pages:gh-pages 2>/dev/null; then
+            git checkout gh-pages
+          else
+            git checkout --orphan gh-pages
+            git rm -rf .
+          fi
 
-          git checkout main -- init.sh
-          cp init.sh welcome.sh
-          rm init.sh
-
-          echo "get.simplemotion.com" > CNAME
+          git checkout main -- welcome.sh CNAME
 
           git add welcome.sh CNAME
           git diff --cached --quiet && echo "No changes" || \
