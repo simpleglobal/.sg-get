@@ -2,7 +2,7 @@
 
 | Version | Hash | Date | Author | Message |
 |---------|------|------|--------|---------|
-| v0.0.0.14 | PENDING | 2026-04-13 11:00 UTC | Greg Gowans | Backfill CHANGE.md for v0.0.0.6–13 |
+| v0.0.0.14 | 3a00a23 | 2026-04-13 11:00 UTC | Greg Gowans | Backfill CHANGE.md for v0.0.0.6–13 |
 | v0.0.0.13 | c4ed423 | 2026-04-13 07:02 UTC | Greg Gowans | Add Joy to welcome email CC |
 | v0.0.0.12 | 39f632e | 2026-04-13 07:00 UTC | Greg Gowans | Fix workflows — adapt welcome email for SG, fix deploy-pages for welcome.sh rename |
 | v0.0.0.11 | 92fd9f9 | 2026-04-13 06:57 UTC | Greg Gowans | Add claude-plugins-official to marketplaces, fix MCP binary paths, tighten employee repo search |
