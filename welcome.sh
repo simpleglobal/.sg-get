@@ -138,10 +138,10 @@ if [[ -n "$EMPLOYEE_REPO" ]]; then
     git clone --recurse-submodules \
         "https://github.com/${EMPLOYEES_ORG}/${EMPLOYEE_REPO}.git" \
         "$HOME/SimpleGlobal"
-    ok "Employee repo cloned to ~/SimpleMotion"
+    ok "Employee repo cloned to ~/SimpleGlobal"
 else
     warn "No employee repo found matching '$SEARCH_NAME'."
-    warn "Creating ~/SimpleMotion manually. Ask your admin to create your employee repo."
+    warn "Creating ~/SimpleGlobal manually. Ask your admin to create your employee repo."
     mkdir -p "$HOME/SimpleGlobal"
 fi
 
@@ -199,15 +199,16 @@ ln -sf SimpleGlobal/.userconfig/.gitconfig  "$HOME/.gitconfig"
 ln -sf SimpleGlobal/.userconfig/.zshenv     "$HOME/.zshenv"
 ln -sf SimpleGlobal/.userconfig/.zshrc      "$HOME/.zshrc"
 
-# Claude-level: ~/.claude/ → ../SimpleGlobal/.userconfig/.claude/
-mkdir -p "$HOME/.claude/plugins"
-ln -sf ../SimpleGlobal/.userconfig/.claude/CLAUDE.md       "$HOME/.claude/CLAUDE.md"
-ln -sf ../SimpleGlobal/.userconfig/.claude/settings.json   "$HOME/.claude/settings.json"
-ln -sf ../SimpleGlobal/.userconfig/.claude/.mcp.json       "$HOME/.claude/.mcp.json"
+# Claude Code dual-login: ~/.claude-sg/ → ../SimpleGlobal/.userconfig/.claude/
+# SG sessions use CLAUDE_CONFIG_DIR=~/.claude-sg (set by 'sg' alias)
+mkdir -p "$HOME/.claude-sg/plugins"
+ln -sf ../SimpleGlobal/.userconfig/.claude/CLAUDE.md       "$HOME/.claude-sg/CLAUDE.md"
+ln -sf ../SimpleGlobal/.userconfig/.claude/settings.json   "$HOME/.claude-sg/settings.json"
+ln -sf ../SimpleGlobal/.userconfig/.claude/.mcp.json       "$HOME/.claude-sg/.mcp.json"
 ln -sf ../../SimpleGlobal/.userconfig/.claude/plugins/known_marketplaces.json \
-       "$HOME/.claude/plugins/known_marketplaces.json"
+       "$HOME/.claude-sg/plugins/known_marketplaces.json"
 ln -sf ../../SimpleGlobal/.userconfig/.claude/plugins/blocklist.json \
-       "$HOME/.claude/plugins/blocklist.json"
+       "$HOME/.claude-sg/plugins/blocklist.json"
 
 # gh/git config: COPY (not symlink — gh auth login writes tokens here)
 mkdir -p "$HOME/.config/gh" "$HOME/.config/git"
