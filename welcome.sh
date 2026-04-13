@@ -129,9 +129,10 @@ echo ""
 info "Looking for employee repo in $EMPLOYEES_ORG..."
 
 SEARCH_NAME=$(echo "$USER_NAME" | tr ' ' '-')
+# Match format: 9200-XXXX-SG-Name
 EMPLOYEE_REPO=$(gh repo list "$EMPLOYEES_ORG" \
     --json name --jq ".[].name" 2>/dev/null \
-    | grep -i "$SEARCH_NAME" | head -1 || true)
+    | grep -iE "SG-${SEARCH_NAME}$" | head -1 || true)
 
 if [[ -n "$EMPLOYEE_REPO" ]]; then
     info "Found: $EMPLOYEE_REPO"
