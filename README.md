@@ -1,22 +1,22 @@
-# .sm-welcome
+# .sg-get
 
-Executive onboarding bootstrap for SimpleMotion. Sets up Claude Code, gh CLI, Rust, and the full plugin environment on a fresh Mac with a single command.
+Executive onboarding bootstrap for SimpleGlobal. Sets up Claude Code, gh CLI, Rust, and the full plugin environment on a fresh Mac with a single command.
 
 ## Usage
 
 ```bash
-curl -fsSL https://get.simplemotion.com/welcome.sh | bash
+curl -fsSL https://get.simplemotion.global/init.sh | bash
 ```
 
 ## What it does
 
-The script asks for your **SimpleMotion email** and infers everything else:
+The script asks for your **SimpleGlobal email** and infers everything else:
 
 ```
-Email:  joy.yeoh@simplemotion.com
+Email:  joy.yeoh@simplemotion.global
   ├─→ Name:     Joy Yeoh
-  ├─→ GitHub:   Joy-Yeoh-SM
-  └─→ Repo:     auto-discovered in SimpleMotion-9200-0000-00-Employees
+  ├─→ GitHub:   Joy-Yeoh-SG
+  └─→ Repo:     auto-discovered in SimpleGlobal-9200-0000-00-Employees
 ```
 
 ### Installs
@@ -25,7 +25,7 @@ Email:  joy.yeoh@simplemotion.com
 |------|---------|----------|
 | Claude Code | Latest | System PATH |
 | gh CLI | Latest release | `~/.local/bin/` |
-| Rust (rustup) | Stable | `~/SimpleMotion/.cargo/bin/` |
+| Rust (rustup) | Stable | `~/SimpleGlobal/.cargo/bin/` |
 
 ### Configures
 
@@ -49,22 +49,22 @@ A welcome confirmation email via Microsoft 365 Graph API (GitHub Actions workflo
 After the script completes, open a new terminal:
 
 ```bash
-sm                          # Launch Claude Code in ~/SimpleMotion
-/sm-orgs --sync-folders     # Pull org folder structure
-/sm-mcp --auth              # Authenticate MCP integrations (when ready)
+sm                          # Launch Claude Code in ~/SimpleGlobal
+/sg-simple --sync-folders     # Pull org folder structure
+/sg-mcp --auth              # Authenticate MCP integrations (when ready)
 ```
 
 ## Admin: onboarding a new executive
 
 Before giving the new exec the curl command:
 
-1. Create their GitHub account (pattern: `Firstname-Lastname-SM`)
+1. Create their GitHub account (pattern: `Firstname-Lastname-SG`)
 2. Invite them to the `simplemotion-global` enterprise
 3. Create their employee repo:
 
 ```bash
-gh repo create SimpleMotion-9200-0000-00-Employees/9200-XXXX-SM-Firstname-Lastname \
-  --template SimpleMotion-9900-0000-00-Templates/990002-SG-99-SimpleMotion-Folder \
+gh repo create SimpleGlobal-9200-0000-00-Employees/9200-XXXX-SM-Firstname-Lastname \
+  --template SimpleGlobal-9900-0000-00-Templates/990002-SG-99-SimpleGlobal-Folder \
   --internal \
   --description "Employee home directory for Firstname Lastname"
 ```
@@ -83,4 +83,4 @@ See [docs/WORKFLOW.md](docs/WORKFLOW.md) for full design rationale, config file 
 
 ## License
 
-MIT — SimpleMotion.Global Pty Ltd. See [ASSIGN.md](ASSIGN.md).
+MIT — SimpleGlobal.Global Pty Ltd. See [ASSIGN.md](ASSIGN.md).

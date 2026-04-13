@@ -2,13 +2,13 @@
 set -euo pipefail
 
 # ============================================================================
-# SimpleMotion Executive Onboarding Bootstrap
-# Usage: curl -fsSL https://get.simplemotion.com/welcome.sh | bash
+# SimpleGlobal Executive Onboarding Bootstrap
+# Usage: curl -fsSL https://get.simplemotion.global/init.sh | bash
 # ============================================================================
 
-INIT_REPO="https://github.com/simplemotion/.sm-welcome.git"
-INIT_DIR="/tmp/.sm-welcome"
-EMPLOYEES_ORG="SimpleMotion-9200-0000-00-Employees"
+INIT_REPO="https://github.com/simpleglobal/.sg-get.git"
+INIT_DIR="/tmp/.sg-get"
+EMPLOYEES_ORG="SimpleGlobal-9200-0000-00-Employees"
 
 # ── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -20,7 +20,7 @@ fail()  { echo "  [x] $*" >&2; exit 1; }
 # ── Step 1: Preflight ──────────────────────────────────────────────────────
 
 echo ""
-echo "  SimpleMotion — Executive Onboarding"
+echo "  SimpleGlobal — Executive Onboarding"
 echo "  ======================================"
 echo ""
 
@@ -31,8 +31,8 @@ command -v git >/dev/null    || fail "git not found. Install Xcode Command Line 
 ARCH=$(uname -m)
 info "macOS $(sw_vers -productVersion) ($ARCH)"
 
-if [[ -d "$HOME/SimpleMotion" ]]; then
-    warn "~/SimpleMotion already exists. This script is for fresh installs."
+if [[ -d "$HOME/SimpleGlobal" ]]; then
+    warn "~/SimpleGlobal already exists. This script is for fresh installs."
     read -p "  Continue anyway? (y/n): " CONTINUE < /dev/tty
     [[ "$CONTINUE" == "y" ]] || exit 0
 fi
@@ -40,9 +40,9 @@ fi
 # ── Step 2: Collect email ──────────────────────────────────────────────────
 
 echo ""
-read -p "  SimpleMotion email: " USER_EMAIL < /dev/tty
+read -p "  SimpleGlobal email: " USER_EMAIL < /dev/tty
 
-[[ "$USER_EMAIL" == *@simplemotion.com ]] || fail "Must be an @simplemotion.com address."
+[[ "$USER_EMAIL" == *@simplemotion.global ]] || fail "Must be an @simplemotion.global address."
 
 # Infer identity from email prefix
 PREFIX="${USER_EMAIL%%@*}"
@@ -54,7 +54,7 @@ USER_NAME=$(echo "$PREFIX" | tr '.' '\n' \
 GITHUB_USERNAME=$(echo "$PREFIX" | tr '.' '\n' \
     | awk '{print toupper(substr($0,1,1)) tolower(substr($0,2))}' \
     | paste -sd '-')
-GITHUB_USERNAME="${GITHUB_USERNAME}-SM"
+GITHUB_USERNAME="${GITHUB_USERNAME}-SG"
 
 echo ""
 echo "  Inferred identity:"
@@ -137,19 +137,19 @@ if [[ -n "$EMPLOYEE_REPO" ]]; then
     info "Found: $EMPLOYEE_REPO"
     git clone --recurse-submodules \
         "https://github.com/${EMPLOYEES_ORG}/${EMPLOYEE_REPO}.git" \
-        "$HOME/SimpleMotion"
+        "$HOME/SimpleGlobal"
     ok "Employee repo cloned to ~/SimpleMotion"
 else
     warn "No employee repo found matching '$SEARCH_NAME'."
     warn "Creating ~/SimpleMotion manually. Ask your admin to create your employee repo."
-    mkdir -p "$HOME/SimpleMotion"
+    mkdir -p "$HOME/SimpleGlobal"
 fi
 
 # ── Step 8: Install Rust ──────────────────────────────────────────────────
 
 echo ""
-export CARGO_HOME="$HOME/SimpleMotion/.cargo"
-export RUSTUP_HOME="$HOME/SimpleMotion/.rustup"
+export CARGO_HOME="$HOME/SimpleGlobal/.cargo"
+export RUSTUP_HOME="$HOME/SimpleGlobal/.rustup"
 
 if [[ -f "$CARGO_HOME/bin/rustc" ]]; then
     ok "Rust already installed: $("$CARGO_HOME/bin/rustc" --version)"
@@ -166,7 +166,7 @@ fi
 echo ""
 info "Deploying configuration..."
 
-DEST="$HOME/SimpleMotion/.userconfig"
+DEST="$HOME/SimpleGlobal/.userconfig"
 mkdir -p "$DEST/.claude/plugins" "$DEST/.config/gh" "$DEST/.config/git" "$DEST/.m365"
 touch "$DEST/.gitkeep" "$DEST/.m365/.gitkeep"
 
@@ -188,25 +188,25 @@ cp "$INIT_DIR/config/claude/plugins/blocklist.json"        "$DEST/.claude/plugin
 cp "$INIT_DIR/config/gh/config.yml"                        "$DEST/.config/gh/config.yml"
 cp "$INIT_DIR/config/git/ignore"                           "$DEST/.config/git/ignore"
 
-ok "Configuration deployed to ~/SimpleMotion/.userconfig/"
+ok "Configuration deployed to ~/SimpleGlobal/.userconfig/"
 
 # ── Step 10: Create symlinks ──────────────────────────────────────────────
 
 info "Creating symlinks..."
 
-# Home-level: ~/ → SimpleMotion/.userconfig/
-ln -sf SimpleMotion/.userconfig/.gitconfig  "$HOME/.gitconfig"
-ln -sf SimpleMotion/.userconfig/.zshenv     "$HOME/.zshenv"
-ln -sf SimpleMotion/.userconfig/.zshrc      "$HOME/.zshrc"
+# Home-level: ~/ → SimpleGlobal/.userconfig/
+ln -sf SimpleGlobal/.userconfig/.gitconfig  "$HOME/.gitconfig"
+ln -sf SimpleGlobal/.userconfig/.zshenv     "$HOME/.zshenv"
+ln -sf SimpleGlobal/.userconfig/.zshrc      "$HOME/.zshrc"
 
-# Claude-level: ~/.claude/ → ../SimpleMotion/.userconfig/.claude/
+# Claude-level: ~/.claude/ → ../SimpleGlobal/.userconfig/.claude/
 mkdir -p "$HOME/.claude/plugins"
-ln -sf ../SimpleMotion/.userconfig/.claude/CLAUDE.md       "$HOME/.claude/CLAUDE.md"
-ln -sf ../SimpleMotion/.userconfig/.claude/settings.json   "$HOME/.claude/settings.json"
-ln -sf ../SimpleMotion/.userconfig/.claude/.mcp.json       "$HOME/.claude/.mcp.json"
-ln -sf ../../SimpleMotion/.userconfig/.claude/plugins/known_marketplaces.json \
+ln -sf ../SimpleGlobal/.userconfig/.claude/CLAUDE.md       "$HOME/.claude/CLAUDE.md"
+ln -sf ../SimpleGlobal/.userconfig/.claude/settings.json   "$HOME/.claude/settings.json"
+ln -sf ../SimpleGlobal/.userconfig/.claude/.mcp.json       "$HOME/.claude/.mcp.json"
+ln -sf ../../SimpleGlobal/.userconfig/.claude/plugins/known_marketplaces.json \
        "$HOME/.claude/plugins/known_marketplaces.json"
-ln -sf ../../SimpleMotion/.userconfig/.claude/plugins/blocklist.json \
+ln -sf ../../SimpleGlobal/.userconfig/.claude/plugins/blocklist.json \
        "$HOME/.claude/plugins/blocklist.json"
 
 # gh/git config: COPY (not symlink — gh auth login writes tokens here)
@@ -222,7 +222,7 @@ ok "Symlinks created."
 echo ""
 info "Sending welcome confirmation email..."
 gh workflow run welcome.yml \
-    --repo simplemotion/.sm-welcome \
+    --repo simpleglobal/.sg-get \
     --field email="$USER_EMAIL" \
     --field name="$USER_NAME" 2>/dev/null \
     && ok "Welcome email triggered. Check your inbox." \
@@ -247,7 +247,7 @@ echo "  Rust:        $(source "$CARGO_HOME/env" 2>/dev/null && rustc --version 2
 echo ""
 echo "  Next steps:"
 echo "    1. Open a new terminal (or run: source ~/.zshrc)"
-echo "    2. Type 'sm' to launch Claude Code in ~/SimpleMotion"
-echo "    3. Run '/sm-orgs --sync-folders' to pull org structure"
+echo "    2. Type 'sg' to launch Claude Code in ~/SimpleGlobal"
+echo "    3. Run '/sg-simple --sync-folders' to pull org structure"
 echo "    4. Check your email for the welcome confirmation"
 echo ""
